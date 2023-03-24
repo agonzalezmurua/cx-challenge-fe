@@ -1,0 +1,6 @@
+{
+  "page.title": "Mercado Libre Argentina - Envíos Gratis en el día",
+  "page.description": "Comprá productos con Envío Gratis en el día en Mercado Libre Argentina. Encuentrá miles de marcas y productos a precios increíbles.",
+  "product.price": "{{amount, currency}}",
+  "product.installments": "En {{quantity}} cuotas de {{amount, currency}}"
+}
