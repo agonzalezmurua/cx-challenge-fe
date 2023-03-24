@@ -1,12 +1,12 @@
 import { Content } from "@/components/layout/Content";
 import { Header } from "@/components/layout/Header";
 import { ProductCard } from "@/components/ProductCard";
-import { GlobalContext } from "@/contexts/global.context";
+import { GlobalContext } from "@/global.context";
 import { useTranslation } from "next-i18next";
 import Head from "next/head";
 import { useContext, useEffect } from "react";
 import useSwr from "swr";
-import styles from "./HomePage.module.scss";
+import styles from "./Home.module.scss";
 
 export function HomePage() {
   const { t } = useTranslation("home");

@@ -1,9 +1,9 @@
+import { GlobalContext } from "@/global.context";
 import Logo from "@/public/favicon.svg";
-import styles from "./Header.module.scss";
 import Image from "next/image";
 import { useCallback, useContext } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import { GlobalContext } from "@/contexts/global.context";
+import styles from "./Header.module.scss";
 
 export const Header = () => {
   const { query, actions } = useContext(GlobalContext);

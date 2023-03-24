@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render and match snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="container"
+  >
+    <section
+      class="left"
+    >
+      <section>
+        First
+      </section>
+    </section>
+    <section
+      class="middle"
+    >
+      <section>
+        Second
+      </section>
+    </section>
+    <section
+      class="right"
+    >
+      <section>
+        Third
+      </section>
+    </section>
+  </section>
+</DocumentFragment>
+`;

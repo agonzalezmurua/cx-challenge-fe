@@ -1,5 +1,5 @@
-import { HomePage } from "@/components/pages/HomePage";
-import { GlobalContextProvider } from "@/contexts/global.context";
+import { HomePage } from "@/components/pages/Home.page";
+import { GlobalContextProvider } from "global.context";
 import { Product } from "@/models/Product";
 import { fetcher } from "@/shared.fetcher";
 import { GetServerSidePropsContext } from "next";
