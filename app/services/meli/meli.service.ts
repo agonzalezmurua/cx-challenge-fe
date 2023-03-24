@@ -1,6 +1,7 @@
-import { ProductResponse } from "./product.inteface";
-import qs from "qs";
 import { fetcher } from "@/shared.fetcher";
+import qs from "qs";
+import { ProductResponse } from "./product.inteface";
+import logger from "consola";
 
 type SearchParams = {
   /** Product limit, defaults to 10 */
@@ -53,7 +54,7 @@ class ProductService {
   public async search({
     limit = 10,
     query: q,
-  }: SearchParams): Promise<MeliResponse<ProductResponse>> {
+  }: SearchParams): Promise<MeliResponse<ProductResponse> | undefined> {
     try {
       const result = await fetcher(
         this.base + "/search?" + qs.stringify({ limit, q })
@@ -61,8 +62,8 @@ class ProductService {
 
       return result;
     } catch (error) {
-      // TODO: Add better fallback
-      throw new Error("Unhandled Meli Error");
+      logger.error("Meli error:", error);
+      return undefined;
     }
   }
 }

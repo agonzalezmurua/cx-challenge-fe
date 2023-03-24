@@ -7,11 +7,15 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Product[]>
 ) {
-  const { results } = await MeliService.products.search({
+  const response = await MeliService.products.search({
     query: String(req.query.search),
   });
 
-  const products: Product[] = results.map((r) => ({
+  if (!response) {
+    return res.status(200).json([]);
+  }
+
+  const products: Product[] = response.results.map((r) => ({
     id: r.id,
     title: r.title,
     price: {
