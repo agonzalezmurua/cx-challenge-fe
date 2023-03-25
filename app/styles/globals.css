@@ -5,14 +5,26 @@
   --border-radius-sm: 4px;
 
   --yellow-500: #ffe600;
+  
   --blue-500: #1582ff;
+
   --green-500: #1ed760;
   --green-700: #348a0b;
 
   --gray-700: #333;
   --gray-500: #666;
+  --gray-400: #898989;
+  --gray-300: #a8a8a8;
+  --gray-200: #d8d8d8;
   --gray-100: #eee;
   --gray-50: #fdfdfd;
+
+  --shadow-color: #33333308;
+
+  --shadow-sm: drop-shadow(0 1px 1px var(--shadow-color));
+  --shadow-md: drop-shadow(0 4px 3px var(--shadow-color)) drop-shadow(0 2px 2px var(--shadow-color));
+  --shadow-lg: drop-shadow(0 10px 8px var(--shadow-color)) drop-shadow(0 4px 3px var(--shadow-color));
+  --shadow-xl: drop-shadow(0 20px 13px var(--shadow-color)) drop-shadow(0 8px 5px var(--shadow-color));
 }
 
 * {

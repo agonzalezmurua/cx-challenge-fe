@@ -1,4 +1,4 @@
-import { Product } from "@/models/Product";
+import { Product } from "@/models/Product.model";
 import { render } from "@testing-library/react";
 import { ProductCard } from "./ProductCard.component";
 

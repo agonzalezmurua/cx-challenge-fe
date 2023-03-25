@@ -2,11 +2,13 @@ import { GlobalContext } from "@/global.context";
 import Logo from "@/public/favicon.svg";
 import Image from "next/image";
 import { useCallback, useContext } from "react";
+import { useTranslation } from "next-i18next";
 import { AiOutlineSearch } from "react-icons/ai";
 import styles from "./Header.module.scss";
 
 export const Header = () => {
   const { query, actions } = useContext(GlobalContext);
+  const { t } = useTranslation("common");
   const handleSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -25,6 +27,7 @@ export const Header = () => {
             type="text"
             className={styles.filter}
             defaultValue={query.search}
+            placeholder={t<string>("header.input_placeholder")}
           />
           <button className={styles.search}>
             <AiOutlineSearch />

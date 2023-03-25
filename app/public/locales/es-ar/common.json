@@ -1,1 +1,4 @@
-{}
+{
+  "product_sort.selected_label": "Ordenar por {{sort}}",
+  "header.input_placeholder": "Buscar productos, marcas y más..."
+}

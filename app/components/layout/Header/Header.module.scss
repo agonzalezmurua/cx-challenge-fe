@@ -40,6 +40,10 @@
 
   outline: none;
 
+  &::placeholder {
+    color: var(--gray-300);
+  }
+
   &:focus-visible {
     border-color: var(--blue-500);
   }

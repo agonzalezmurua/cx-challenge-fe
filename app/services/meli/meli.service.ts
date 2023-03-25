@@ -1,13 +1,15 @@
 import { fetcher } from "@/shared.fetcher";
-import qs from "qs";
-import { ProductResponse } from "./product.inteface";
 import logger from "consola";
+import qs from "qs";
+import type { ProductResponse } from "./interfaces";
 
-type SearchParams = {
+type ProductSearchParams = {
   /** Product limit, defaults to 10 */
   limit?: number;
   /** Text query */
   query: string;
+  sort?: string;
+  price?: string;
 };
 
 type Filter = {
@@ -54,10 +56,12 @@ class ProductService {
   public async search({
     limit = 10,
     query: q,
-  }: SearchParams): Promise<MeliResponse<ProductResponse> | undefined> {
+    sort = undefined,
+    price = undefined,
+  }: ProductSearchParams): Promise<MeliResponse<ProductResponse> | undefined> {
     try {
       const result = await fetcher(
-        this.base + "/search?" + qs.stringify({ limit, q })
+        this.base + "/search?" + qs.stringify({ limit, q, sort, price })
       );
 
       return result;

@@ -4,22 +4,13 @@ import { ProductCard } from "@/components/ProductCard";
 import { GlobalContext } from "@/global.context";
 import { useTranslation } from "next-i18next";
 import Head from "next/head";
-import { useContext, useEffect } from "react";
-import useSwr from "swr";
+import { useContext } from "react";
+import { SortFilter } from "../SortFilter";
 import styles from "./Home.module.scss";
 
 export function HomePage() {
   const { t } = useTranslation("home");
-  const { products } = useContext(GlobalContext);
-  const {
-    query: { search },
-    actions: { updateProducts },
-  } = useContext(GlobalContext);
-  useSwr(`/api/products?search=${search}`, {
-    onSuccess: (data) => {
-      updateProducts(data);
-    },
-  });
+  const { products: products } = useContext(GlobalContext);
 
   return (
     <>
@@ -32,7 +23,9 @@ export function HomePage() {
       <Header />
       <main className={styles.main}>
         <Content>
-          <section></section>
+          <section className={styles.sidebar}>
+            <SortFilter />
+          </section>
           <ul className={styles.product_list}>
             {products.map((p) => (
               <li key={p.id}>

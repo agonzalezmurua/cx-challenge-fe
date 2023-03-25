@@ -1,5 +1,5 @@
 import { GlobalContext } from "@/global.context";
-import { Product } from "@/models/Product";
+import { Product } from "@/models/Product.model";
 import { render } from "@testing-library/react";
 import { HomePage } from "./Home.page";
 
@@ -39,8 +39,8 @@ it("should render and match snapshot", () => {
       return (
         <GlobalContext.Provider
           value={{
-            actions: { updateProducts, updateQuery },
-            products,
+            actions: { updateSearchResult: updateProducts, updateQuery },
+            products: products,
             query: { search: "hello" },
           }}
         >

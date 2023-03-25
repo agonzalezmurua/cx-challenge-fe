@@ -1,50 +1,68 @@
-import { Product } from "@/models/Product";
+import { Product } from "@/models/Product.model";
+import merge from "lodash/merge";
 import { useRouter } from "next/router";
-import { ParsedUrlQuery } from "querystring";
-import { createContext, useReducer, useCallback } from "react";
+import { createContext, useCallback, useReducer, useMemo } from "react";
+import { SearchSort } from "./models/SearchSort.model";
+import useSwr from "swr";
+import qs from "qs";
+import type { GetProductsResult } from "./pages/api/products";
 
-type QueryType =
-  | ParsedUrlQuery
-  | {
-      search: string | string[] | undefined;
-    };
+type QueryType = {
+  search: string | string[] | undefined;
+  sort?: SearchSort;
+};
+type SearchParameters = {
+  sorts: SearchSort[];
+};
 
-type GlobalContextValue = {
+type ContextValueType = {
   query: QueryType;
+  parameters: SearchParameters;
   products: Product[];
   actions: {
     updateQuery: (query: Partial<QueryType>) => void;
-    updateProducts: (products: Product[]) => void;
+    updateSearchResult: (
+      products: Product[],
+      parameters: SearchParameters
+    ) => void;
   };
 };
 
 type ActionTypes =
   | { type: "updateQuery"; value: Partial<QueryType> }
   | {
-      type: "updateProducts";
-      value: Product[];
+      type: "updateSearchResult";
+      value: Parameters<ContextValueType["actions"]["updateSearchResult"]>;
     };
 
-export const GlobalContext = createContext<GlobalContextValue>({
+export const GlobalContext = createContext<ContextValueType>({
   query: {
     search: "",
+    sort: undefined,
+  },
+  parameters: {
+    sorts: [],
   },
   products: [],
   actions: {
     updateQuery: () => {},
-    updateProducts: () => {},
+    updateSearchResult: () => {},
   },
 });
 
 function reducer(
-  state: Omit<GlobalContextValue, "actions">,
+  state: Omit<ContextValueType, "actions">,
   action: ActionTypes
-): Omit<GlobalContextValue, "actions"> {
+): Omit<ContextValueType, "actions"> {
   switch (action.type) {
     case "updateQuery":
-      return { ...state, query: { ...state.query, ...action.value } };
-    case "updateProducts":
-      return { ...state, products: action.value };
+      return { ...state, query: merge(state.query, action.value) };
+    case "updateSearchResult":
+      return {
+        ...state,
+        products: action.value[0],
+        parameters: action.value[1],
+      };
     default:
       return state;
   }
@@ -57,34 +75,55 @@ export const GlobalContextProvider = ({
   initialValues,
 }: {
   children: any;
-  initialValues: Omit<GlobalContextValue, "actions">;
+  initialValues: Omit<ContextValueType, "actions">;
 }): JSX.Element => {
   const router = useRouter();
   const [state, dispatch] = useReducer(reducer, initialValues);
-  const updateQuery = useCallback<GlobalContextValue["actions"]["updateQuery"]>(
-    (query) => {
-      dispatch({ type: "updateQuery", value: query });
-      router.push(
-        { pathname: "/", query: { ...router.query, ...query } },
-        undefined,
-        { shallow: true }
-      );
-    },
-    [dispatch, router]
+  const getQueryString = useCallback(
+    (query: QueryType) =>
+      qs.stringify({
+        search: query.search,
+        sort: query.sort?.id,
+      }),
+    []
   );
-  const updateProducts = useCallback<
-    GlobalContextValue["actions"]["updateProducts"]
+
+  const updateQuery = useCallback<ContextValueType["actions"]["updateQuery"]>(
+    (query) => {
+      const newQuery: QueryType = { search: query.search, sort: query.sort };
+
+      router.push(
+        { pathname: "/", query: getQueryString(newQuery) },
+        undefined,
+        {
+          shallow: true,
+        }
+      );
+
+      dispatch({ type: "updateQuery", value: newQuery });
+    },
+    [dispatch, getQueryString, router]
+  );
+  const updateSearchResult = useCallback<
+    ContextValueType["actions"]["updateSearchResult"]
   >(
-    (products) => dispatch({ type: "updateProducts", value: products }),
+    (...args) => {
+      dispatch({ type: "updateSearchResult", value: args });
+    },
     [dispatch]
   );
+
+  useSwr<GetProductsResult>(`/api/products?${getQueryString(state.query)}`, {
+    onSuccess: (data) => {
+      updateSearchResult(data.products, { sorts: data.available_sorts });
+    },
+  });
 
   return (
     <GlobalContext.Provider
       value={{
-        products: state.products,
-        query: state.query,
-        actions: { updateQuery, updateProducts },
+        ...state,
+        actions: { updateQuery, updateSearchResult },
       }}
     >
       {children}

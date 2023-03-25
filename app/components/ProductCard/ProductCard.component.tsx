@@ -1,8 +1,8 @@
-import { Product } from "@/models/Product";
-import Image from "next/image";
+import { Product } from "@/models/Product.model";
 import { useTranslation } from "next-i18next";
-import styles from "./ProductCard.module.scss";
+import Image from "next/image";
 import { BsTruck } from "react-icons/bs";
+import styles from "./ProductCard.module.scss";
 
 type ProductCardProps = Product;
 
