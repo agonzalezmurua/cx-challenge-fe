@@ -1,8 +1,39 @@
+
+@import "../../../variables.scss";
+
 .container {
+  --max-content-width: var(--max-width);
+  --top-reserved-space: 4rem;
+
   display: flex;
   justify-content: space-between;
   
-  padding-top: 4rem;
+  padding-top: var(--top-reserved-space);
+
+  @media only screen and (max-width: ($max-width + 420px)) {
+    flex-direction: column;
+    align-items: center;
+
+    margin: auto;
+
+    padding-top: 0;
+
+    padding: 1rem;
+
+    .left {
+      width: 100%;
+      max-width: var(--max-content-width);
+      min-height: var(--top-reserved-space);
+
+      padding-top: calc(1rem - var(--top-reserved-space));
+      padding-bottom: 1rem;
+
+      align-items: flex-end;
+      justify-content: flex-start;
+
+      z-index: 1;
+    }
+  }
 }
 
 .left {
@@ -12,8 +43,9 @@
 }
 
 .middle {
-  max-width: var(--max-width);
+  max-width: var(--max-content-width);
   flex-grow: 1;
+  width: 100%;
 }
 
 .right{
