@@ -32,16 +32,27 @@ export const SortFilter = () => {
   );
 
   return (
-    <section className={styles.filter} ref={container}>
+    <section
+      className={styles.filter}
+      data-testid="sort_filter"
+      ref={container}
+      onClick={toggleCollapse}
+    >
       <span
+        data-testid="sort_label"
         className={styles.filter__label}
         data-collapsed={collapsed}
-        onClick={toggleCollapse}
       >
         {t("product_sort.selected_label", { sort: sort?.name })}
         <RxCaretDown className={styles.filter__caret} />
       </span>
-      <ul role="listbox" hidden={collapsed} className={styles.list}>
+      <ul
+        data-testid="sort_listbox"
+        aria-expanded={collapsed}
+        role="listbox"
+        hidden={collapsed}
+        className={styles.list}
+      >
         {sort && (
           <SortFilterItem selected value={sort}>
             {sort?.name}

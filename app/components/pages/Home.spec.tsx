@@ -41,6 +41,9 @@ it("should render and match snapshot", () => {
           value={{
             actions: { updateSearchResult: updateProducts, updateQuery },
             products: products,
+            parameters: {
+              sorts: [],
+            },
             query: { search: "hello" },
           }}
         >

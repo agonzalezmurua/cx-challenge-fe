@@ -26,6 +26,7 @@ exports[`should render and match snapshot 1`] = `
         <input
           class="filter"
           name="filter"
+          placeholder="header.input_placeholder"
           type="text"
           value=""
         />
