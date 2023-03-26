@@ -24,6 +24,7 @@ it("should render and match snapshot", async () => {
                 name: "Second item",
               },
             ],
+            filters: [],
           },
           products: [],
           query: {
@@ -38,7 +39,7 @@ it("should render and match snapshot", async () => {
   });
 
   expect(result.asFragment()).toMatchSnapshot();
-  const trigger = result.getByTestId("sort_filter");
+  const trigger = result.getByTestId("sort_trigger");
   const option = result.getByText("Second item");
 
   expect(trigger).toBeInTheDocument();

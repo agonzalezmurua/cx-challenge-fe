@@ -67,36 +67,97 @@ exports[`should render and match snapshot 1`] = `
             data-testid="sort_filter"
           >
             <span
-              class="filter__label"
-              data-collapsed="true"
-              data-testid="sort_label"
+              class="filter__container"
             >
-              product_sort.selected_label
-              <svg
-                class="filter__caret"
-                fill="none"
-                height="1em"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 15 15"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
+              <span
+                class="filter__label"
               >
-                <path
-                  clip-rule="evenodd"
-                  d="M4.18179 6.18181C4.35753 6.00608 4.64245 6.00608 4.81819 6.18181L7.49999 8.86362L10.1818 6.18181C10.3575 6.00608 10.6424 6.00608 10.8182 6.18181C10.9939 6.35755 10.9939 6.64247 10.8182 6.81821L7.81819 9.81821C7.73379 9.9026 7.61934 9.95001 7.49999 9.95001C7.38064 9.95001 7.26618 9.9026 7.18179 9.81821L4.18179 6.81821C4.00605 6.64247 4.00605 6.35755 4.18179 6.18181Z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                />
-              </svg>
+                product_sort.selected_label
+              </span>
+              <section
+                class="filter__control"
+                data-testid="sort_trigger"
+              >
+                <span />
+                <svg
+                  class="filter__caret"
+                  fill="none"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 15 15"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M4.18179 6.18181C4.35753 6.00608 4.64245 6.00608 4.81819 6.18181L7.49999 8.86362L10.1818 6.18181C10.3575 6.00608 10.6424 6.00608 10.8182 6.18181C10.9939 6.35755 10.9939 6.64247 10.8182 6.81821L7.81819 9.81821C7.73379 9.9026 7.61934 9.95001 7.49999 9.95001C7.38064 9.95001 7.26618 9.9026 7.18179 9.81821L4.18179 6.81821C4.00605 6.64247 4.00605 6.35755 4.18179 6.18181Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </section>
             </span>
             <ul
-              aria-expanded="true"
+              aria-expanded="false"
               class="list"
               data-testid="sort_listbox"
               hidden=""
               role="listbox"
             />
+          </section>
+          <section
+            class="container"
+          >
+            <label
+              class="price_filter__label"
+            >
+              product_filter.label
+            </label>
+            <form
+              action="#"
+              class="custom_filter"
+            >
+              <input
+                class="custom_filter__input"
+                min="0"
+                name="custom-minimun"
+                placeholder="product_filter.input_minimun.placeholder_label"
+                type="number"
+                value=""
+              />
+              <span
+                class="custom_filter__separator"
+              />
+              <input
+                class="custom_filter__input"
+                min="0"
+                name="custom-maximun"
+                placeholder="product_filter.input_maximun.placeholder_label"
+                type="number"
+                value=""
+              />
+              <button
+                class="custom_filter__button"
+              >
+                <svg
+                  fill="none"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 15 15"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M6.18194 4.18185C6.35767 4.00611 6.6426 4.00611 6.81833 4.18185L9.81833 7.18185C9.90272 7.26624 9.95013 7.3807 9.95013 7.50005C9.95013 7.6194 9.90272 7.73386 9.81833 7.81825L6.81833 10.8182C6.6426 10.994 6.35767 10.994 6.18194 10.8182C6.0062 10.6425 6.0062 10.3576 6.18194 10.1819L8.86374 7.50005L6.18194 4.81825C6.0062 4.64251 6.0062 4.35759 6.18194 4.18185Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </form>
           </section>
         </section>
       </section>
@@ -115,13 +176,14 @@ exports[`should render and match snapshot 1`] = `
               >
                 <img
                   alt="product picture"
-                  data-nimg="fill"
+                  data-nimg="1"
                   decoding="async"
+                  height="200"
                   loading="lazy"
-                  sizes="100vw"
-                  src="/_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=3840&q=75"
-                  srcset="/_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=640&q=75 640w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=750&q=75 750w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=828&q=75 828w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=1080&q=75 1080w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=1200&q=75 1200w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=1920&q=75 1920w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=2048&q=75 2048w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=3840&q=75 3840w"
-                  style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+                  src="/_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=640&q=75"
+                  srcset="/_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=256&q=75 1x, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=640&q=75 2x"
+                  style="color: transparent;"
+                  width="200"
                 />
               </section>
               <section

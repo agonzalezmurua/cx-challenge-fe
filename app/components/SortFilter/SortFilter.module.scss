@@ -4,21 +4,31 @@
   position: relative;
 
   display: inline-block;
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
-.filter__label {
+.filter__container {
   display: inline-flex;
   align-items: center;
+  gap: 0.25rem;
 
   &[data-collapsed="false"] {
     .filter__caret {
       transform: rotate(180deg);
     }
   }
+}
+
+.filter__control {
+  display: inline-flex;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.filter__label {
+  font-weight: bold;
+  cursor: default;
 }
 
 .filter__caret {
@@ -55,6 +65,7 @@
   --inactive-padding-x: 1rem;
   --active-padding-left: calc(var(--inactive-padding-x) - var(--active-decoration-width));
 
+  cursor: pointer;
   padding: 0.75rem var(--inactive-padding-x);
 
   &:hover {

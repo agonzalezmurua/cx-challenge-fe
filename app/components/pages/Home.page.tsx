@@ -5,6 +5,7 @@ import { GlobalContext } from "@/global.context";
 import { useTranslation } from "next-i18next";
 import Head from "next/head";
 import { useContext } from "react";
+import { PriceFilter } from "../PriceFilter";
 import { SortFilter } from "../SortFilter";
 import styles from "./Home.module.scss";
 
@@ -25,6 +26,7 @@ export function HomePage() {
         <Content>
           <section className={styles.sidebar}>
             <SortFilter />
+            <PriceFilter />
           </section>
           <ul className={styles.product_list}>
             {products.map((p) => (

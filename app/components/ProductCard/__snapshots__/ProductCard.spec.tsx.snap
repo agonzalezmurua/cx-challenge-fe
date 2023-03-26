@@ -10,13 +10,14 @@ exports[`should render and match snapshot 1`] = `
     >
       <img
         alt="product picture"
-        data-nimg="fill"
+        data-nimg="1"
         decoding="async"
+        height="200"
         loading="lazy"
-        sizes="100vw"
-        src="/_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=3840&q=75"
-        srcset="/_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=640&q=75 640w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=750&q=75 750w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=828&q=75 828w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=1080&q=75 1080w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=1200&q=75 1200w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=1920&q=75 1920w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=2048&q=75 2048w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=3840&q=75 3840w"
-        style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+        src="/_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=640&q=75"
+        srcset="/_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=256&q=75 1x, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=640&q=75 2x"
+        style="color: transparent;"
+        width="200"
       />
     </section>
     <section

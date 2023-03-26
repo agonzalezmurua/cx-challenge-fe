@@ -8,8 +8,8 @@ type ProductSearchParams = {
   limit?: number;
   /** Text query */
   query: string;
-  sort?: string;
-  price?: string;
+  sort: string | null | undefined;
+  price: string | null | undefined;
 };
 
 type Filter = {
@@ -56,13 +56,16 @@ class ProductService {
   public async search({
     limit = 10,
     query: q,
-    sort = undefined,
-    price = undefined,
+    sort = null,
+    price = null,
   }: ProductSearchParams): Promise<MeliResponse<ProductResponse> | undefined> {
     try {
-      const result = await fetcher(
-        this.base + "/search?" + qs.stringify({ limit, q, sort, price })
+      const query = qs.stringify(
+        { limit, q, sort, price },
+        { skipNulls: true }
       );
+
+      const result = await fetcher(this.base + "/search?" + query);
 
       return result;
     } catch (error) {

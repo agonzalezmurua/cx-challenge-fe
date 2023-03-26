@@ -43,6 +43,7 @@ it("should render and match snapshot", () => {
             products: products,
             parameters: {
               sorts: [],
+              filters: [],
             },
             query: { search: "hello" },
           }}

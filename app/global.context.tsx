@@ -1,18 +1,22 @@
 import { Product } from "@/models/Product.model";
+import { SearchFilters as SearchFilters } from "@/models/PriceFilter.model";
+import { SearchSort } from "@/models/SearchSort.model";
+import type { GetProductsResult } from "@/pages/api/products";
 import merge from "lodash/merge";
 import { useRouter } from "next/router";
-import { createContext, useCallback, useReducer, useMemo } from "react";
-import { SearchSort } from "./models/SearchSort.model";
-import useSwr from "swr";
 import qs from "qs";
-import type { GetProductsResult } from "./pages/api/products";
+import { createContext, useCallback, useReducer } from "react";
+import useSwr from "swr";
 
 type QueryType = {
   search: string | string[] | undefined;
   sort?: SearchSort;
+  filters?: Array<{ id: string; value: any }>;
 };
+
 type SearchParameters = {
   sorts: SearchSort[];
+  filters: SearchFilters[];
 };
 
 type ContextValueType = {
@@ -39,9 +43,11 @@ export const GlobalContext = createContext<ContextValueType>({
   query: {
     search: "",
     sort: undefined,
+    filters: undefined,
   },
   parameters: {
     sorts: [],
+    filters: [],
   },
   products: [],
   actions: {
@@ -56,7 +62,7 @@ function reducer(
 ): Omit<ContextValueType, "actions"> {
   switch (action.type) {
     case "updateQuery":
-      return { ...state, query: merge(state.query, action.value) };
+      return { ...state, query: merge({}, state.query, action.value) };
     case "updateSearchResult":
       return {
         ...state,
@@ -80,30 +86,40 @@ export const GlobalContextProvider = ({
   const router = useRouter();
   const [state, dispatch] = useReducer(reducer, initialValues);
   const getQueryString = useCallback(
-    (query: QueryType) =>
-      qs.stringify({
-        search: query.search,
-        sort: query.sort?.id,
-      }),
+    (query: Partial<QueryType>) =>
+      qs.stringify(
+        {
+          search: query.search,
+          sort: query.sort?.id,
+          ...Object.fromEntries(
+            query.filters?.map((e) => [e.id, e.value]) ?? []
+          ),
+        },
+        {
+          skipNulls: true,
+          encode: false,
+        }
+      ),
     []
   );
 
   const updateQuery = useCallback<ContextValueType["actions"]["updateQuery"]>(
-    (query) => {
-      const newQuery: QueryType = { search: query.search, sort: query.sort };
+    (update) => {
+      const query = merge({}, state.query, update);
+
+      dispatch({ type: "updateQuery", value: query });
 
       router.push(
-        { pathname: "/", query: getQueryString(newQuery) },
+        { pathname: router.pathname, query: getQueryString(query) },
         undefined,
         {
           shallow: true,
         }
       );
-
-      dispatch({ type: "updateQuery", value: newQuery });
     },
-    [dispatch, getQueryString, router]
+    [dispatch, getQueryString, router, state]
   );
+
   const updateSearchResult = useCallback<
     ContextValueType["actions"]["updateSearchResult"]
   >(
@@ -115,7 +131,10 @@ export const GlobalContextProvider = ({
 
   useSwr<GetProductsResult>(`/api/products?${getQueryString(state.query)}`, {
     onSuccess: (data) => {
-      updateSearchResult(data.products, { sorts: data.available_sorts });
+      updateSearchResult(data.products, {
+        sorts: data.available_sorts,
+        filters: data.available_filters,
+      });
     },
   });
 

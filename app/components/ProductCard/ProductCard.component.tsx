@@ -21,7 +21,7 @@ export const ProductCard = ({
   return (
     <section className={styles.container}>
       <section className={styles.product_picture__container}>
-        <Image src={picture} alt="product picture" fill />
+        <Image src={picture} alt="product picture" height={200} width={200} />
       </section>
       <section className={styles.product_container}>
         <section className={styles.product_price__container}>

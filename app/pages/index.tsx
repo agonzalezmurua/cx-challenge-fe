@@ -1,4 +1,5 @@
 import { HomePage } from "@/components/pages/Home.page";
+import type { SearchFilters } from "@/models/PriceFilter.model";
 import type { Product } from "@/models/Product.model";
 import type { SearchSort } from "@/models/SearchSort.model";
 import { fetcher } from "@/shared.fetcher";
@@ -13,7 +14,9 @@ import type { GetProductsResult } from "./api/products";
 type HomeProps = {
   products: Product[];
   available_sorts: SearchSort[];
+  available_filters: SearchFilters[];
   sort: SearchSort;
+  filters: SearchFilters[];
   fallback: {
     [path: string]: GetProductsResult;
   };
@@ -23,7 +26,9 @@ export default function Home({
   fallback,
   products,
   sort,
+  filters,
   available_sorts,
+  available_filters,
 }: HomeProps) {
   const { query } = useRouter();
 
@@ -40,10 +45,15 @@ export default function Home({
             query: {
               search: query.search,
               sort: sort,
+              filters: filters?.map((f) => ({
+                id: f.id,
+                value: f.values[0].id,
+              })),
             },
             products: products,
             parameters: {
               sorts: available_sorts,
+              filters: available_filters,
             },
           }}
         >
@@ -64,7 +74,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     props: {
       products: result.products,
       available_sorts: result.available_sorts,
-      sort: result.sort,
+      available_filters: result.available_filters,
+      sort: result.sort ?? null,
+      filters: result.filters,
       fallback: {
         [path]: result,
       },

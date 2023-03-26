@@ -1,4 +1,8 @@
 {
-  "product_sort.selected_label": "Ordenar por {{sort}}",
+  "product_sort.selected_label": "Ordenar por",
+  "product_filter.label": "Precio",
+  "product_filter.item_range.amount_label": "({{results}})",
+  "product_filter.input_minimun.placeholder_label": "Mínimo",
+  "product_filter.input_maximun.placeholder_label": "Máximo",
   "header.input_placeholder": "Buscar productos, marcas y más..."
 }
