@@ -4,7 +4,7 @@ const { i18n } = require("./next-i18next.config");
 const nextConfig = {
   reactStrictMode: true,
   publicRuntimeConfig: {
-    host: process.env.APP_HOST,
+    host: process.env.VERCEL_URL ?? process.env.APP_HOST,
   },
   images: {
     remotePatterns: [

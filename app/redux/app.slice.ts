@@ -8,10 +8,7 @@ import { HYDRATE } from "next-redux-wrapper";
 import qs from "qs";
 import type { AppState, AppThunk } from "./store";
 import type { GetProductQuery, GetProductsResult } from "@/pages/api/products";
-import getConfig from "next/config";
 import Router from "next/router";
-
-const { publicRuntimeConfig } = getConfig();
 
 interface AppStateValue {
   query: GetProductQuery;
@@ -102,9 +99,7 @@ export const fetchProducts =
 
     const path = "/api/products?" + queryStr;
 
-    const result = await fetcher<GetProductsResult>(
-      new URL(path, publicRuntimeConfig.host).toString()
-    );
+    const result = await fetcher<GetProductsResult>(path);
 
     dispatch(appSlice.actions.updateSearchResult(result));
   };
