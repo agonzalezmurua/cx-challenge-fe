@@ -2,11 +2,11 @@ import { Product } from "@/models/Product.model";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import { BsTruck } from "react-icons/bs";
-import styles from "./ProductCard.module.scss";
+import styles from "./ProductItem.module.scss";
 
-type ProductCardProps = Product;
+type ProductItemProps = Product;
 
-export const ProductCard = ({
+export const ProductItem = ({
   address,
   free_shipping,
   id,
@@ -15,13 +15,19 @@ export const ProductCard = ({
   price,
   title,
   condition,
-}: ProductCardProps) => {
+}: ProductItemProps) => {
   const { t } = useTranslation("home");
 
   return (
     <section className={styles.container}>
       <section className={styles.product_picture__container}>
-        <Image src={picture} alt="product picture" height={200} width={200} />
+        <Image
+          style={{ objectFit: "cover" }}
+          className={styles.product_picture__image}
+          src={picture}
+          alt="product picture"
+          fill
+        />
       </section>
       <section className={styles.product_container}>
         <section className={styles.product_price__container}>
@@ -39,8 +45,8 @@ export const ProductCard = ({
             </span>
           )}
         </section>
-        <h2 className={styles.product_name}>{title}</h2>
-        <span className={styles.product_installments}>
+        <h2 className={styles.product__name}>{title}</h2>
+        <span className={styles.product__installments}>
           {t("product.installments", {
             quantity: installments.quantity,
             amount: installments.amount,

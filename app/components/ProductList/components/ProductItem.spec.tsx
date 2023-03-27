@@ -1,6 +1,6 @@
 import { Product } from "@/models/Product.model";
 import { render } from "@testing-library/react";
-import { ProductCard } from "./ProductCard.component";
+import { ProductItem } from "./ProductItem.component";
 
 const product: Product = {
   address: {
@@ -24,11 +24,11 @@ const product: Product = {
 };
 
 it("should be defined", () => {
-  expect(ProductCard).toBeDefined();
+  expect(ProductItem).toBeDefined();
 });
 
 it("should render and match snapshot", () => {
-  const result = render(<ProductCard {...product} />);
+  const result = render(<ProductItem {...product} />);
 
   expect(result.asFragment()).toMatchSnapshot();
   expect(result.getByText(product.title)).toBeInTheDocument();

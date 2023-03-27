@@ -1,12 +1,14 @@
+@import "../../../variables.scss";
+
 .container {
   display: flex;
-  height: 15rem;
+  align-items: center;
+  min-height: 10rem;
 
   gap: 1rem;
 
   padding: 1rem 0;
 }
-
 
 .product_container {
   flex: 4;
@@ -16,27 +18,35 @@
 
   gap: 1rem;
   justify-content: center;
-  
 }
 
 .product_picture__container {
   position: relative;
-  aspect-ratio: 1/1;
-
   border-radius: var(--border-radius-sm);
-
   overflow: hidden;
+
+  height: 200px;
+  width: 200px;
+
+  @media only screen and (max-width: (768px)) {
+    height: 150px;
+    width: 150px;
+  }
+
+  flex-shrink: 0;
 }
 
 .product_price__container {
   display: flex;
-  gap: 0.5rem;
   align-items: center;
-  font-size: xx-large;
-}
 
-.product_price__amount {
-  // Keep this in case we want to customize the price tag
+  gap: 0.5rem;
+
+  font-size: xx-large;
+
+  @media only screen and (max-width: (768px)) {
+    font-size: x-large;
+  }
 }
 
 .product_price__free_shipping {
@@ -48,20 +58,36 @@
   padding: 0.25rem;
 }
 
-.product_name {
+.product__name {
   font-size: x-large;
   font-weight: normal;
+
+  @media only screen and (max-width: (768px)) {
+    font-size: large;
+  }
 }
 
-.product_installments {
+.product__installments {
   font-size:medium;
   color: var(--green-700);
+
+  @media only screen and (max-width: (768px)) {
+    font-size: small;
+  }
 }
 
 .product_aside__container {
   flex: 1;
 
-  padding-top: 4rem;
+  top: 25%;
   color: var(--gray-500);
   padding-left: 0;
+
+  @media only screen and (max-width: (768px)) {
+    font-size: small;
+  }
+
+  @media only screen and (max-width: (425px)) {
+  visibility: hidden;
+  }
 }

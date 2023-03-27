@@ -3,6 +3,9 @@ const { i18n } = require("./next-i18next.config");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  publicRuntimeConfig: {
+    host: process.env.APP_HOST,
+  },
   images: {
     remotePatterns: [
       {

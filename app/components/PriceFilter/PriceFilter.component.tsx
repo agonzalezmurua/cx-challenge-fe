@@ -1,8 +1,13 @@
-import { GlobalContext } from "@/global.context";
-import { useCallback, useContext, useMemo, useRef } from "react";
+import {
+  fetchProducts,
+  selectParameters,
+  selectQuery,
+} from "@/redux/app.slice";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { useTranslation } from "next-i18next";
-import styles from "./PriceFilter.module.scss";
+import { useCallback, useMemo, useRef } from "react";
 import { RxCaretRight } from "react-icons/rx";
+import styles from "./PriceFilter.module.scss";
 
 const PRICE_ID = "price";
 const MINIMUN_NAME = "custom-minimun";
@@ -10,11 +15,10 @@ const MAXMIMUN_NAME = "custom-maximun";
 
 export const PriceFilter = () => {
   const form = useRef<HTMLFormElement>(null);
-  const {
-    parameters: { filters },
-    actions: { updateQuery },
-    query,
-  } = useContext(GlobalContext);
+  const { filters } = useAppSelector(selectParameters);
+  const query = useAppSelector(selectQuery);
+  const dispatch = useAppDispatch();
+
   const { t } = useTranslation("common");
   const options = useMemo(
     () => filters?.find((f) => f.id === PRICE_ID),
@@ -25,25 +29,23 @@ export const PriceFilter = () => {
   }, []);
 
   const [defaultMin, defaultMax] = useMemo(() => {
-    const priceQuery = query.filters?.find((q) => q.id === PRICE_ID);
+    if (!query.price) return [undefined, undefined];
 
-    if (!priceQuery) return [undefined, undefined];
-
-    return getInputDefaults(...priceQuery.value.split("-"));
+    return getInputDefaults(...query.price.split("-"));
   }, [query, getInputDefaults]);
 
   const handlePriceUpdate = useCallback(
     // value id would be the pre-defined filter value
     // ie: 4000-* or *-10000 or 1000-50000
     (value: string) => {
-      updateQuery({ filters: [{ id: PRICE_ID, value: value }] });
+      dispatch(fetchProducts({ price: value }));
 
       const [minimun, maximun] = getInputDefaults(...value.split("-"));
       // Update form values, this needs to happen when using the pre-defined filter values
       form.current![MINIMUN_NAME].value = minimun === "*" ? "" : minimun;
       form.current![MAXMIMUN_NAME].value = maximun === "*" ? "" : maximun;
     },
-    [updateQuery, getInputDefaults]
+    [dispatch, getInputDefaults]
   );
 
   return (

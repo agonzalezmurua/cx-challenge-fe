@@ -7,7 +7,7 @@ type ProductSearchParams = {
   /** Product limit, defaults to 10 */
   limit?: number;
   /** Text query */
-  query: string;
+  search: string;
   sort: string | null | undefined;
   price: string | null | undefined;
 };
@@ -55,7 +55,7 @@ class ProductService {
    */
   public async search({
     limit = 10,
-    query: q,
+    search: q,
     sort = null,
     price = null,
   }: ProductSearchParams): Promise<MeliResponse<ProductResponse> | undefined> {

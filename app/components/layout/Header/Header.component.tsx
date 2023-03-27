@@ -1,20 +1,22 @@
-import { GlobalContext } from "@/global.context";
 import Logo from "@/public/favicon.svg";
-import Image from "next/image";
-import { useCallback, useContext } from "react";
+import { fetchProducts, selectQuery } from "@/redux/app.slice";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
+import { useCallback } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import styles from "./Header.module.scss";
 
 export const Header = () => {
-  const { query, actions } = useContext(GlobalContext);
+  const query = useAppSelector(selectQuery);
+  const dispatch = useAppDispatch();
   const { t } = useTranslation("common");
   const handleSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      actions.updateQuery({ ...query, search: e.currentTarget.filter.value });
+      dispatch(fetchProducts({ search: e.currentTarget.filter.value }));
     },
-    [query, actions]
+    [dispatch]
   );
 
   return (

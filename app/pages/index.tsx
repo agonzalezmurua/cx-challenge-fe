@@ -1,86 +1,59 @@
-import { HomePage } from "@/components/pages/Home.page";
-import type { SearchFilters } from "@/models/PriceFilter.model";
-import type { Product } from "@/models/Product.model";
-import type { SearchSort } from "@/models/SearchSort.model";
-import { fetcher } from "@/shared.fetcher";
-import { GlobalContextProvider } from "global.context";
-import { GetServerSidePropsContext } from "next";
+import { Content } from "@/components/layout/Content";
+import { Header } from "@/components/layout/Header";
+import { PriceFilter } from "@/components/PriceFilter";
+import { ProductList } from "@/components/ProductList";
+import { SortFilter } from "@/components/SortFilter";
+import { fetchProducts } from "@/redux/app.slice";
+import { wrapper } from "@/redux/store";
+import styles from "@/styles/Home.module.scss";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useRouter } from "next/router";
-import qs from "qs";
-import { SWRConfig } from "swr";
-import type { GetProductsResult } from "./api/products";
+import Head from "next/head";
 
-type HomeProps = {
-  products: Product[];
-  available_sorts: SearchSort[];
-  available_filters: SearchFilters[];
-  sort: SearchSort;
-  filters: SearchFilters[];
-  fallback: {
-    [path: string]: GetProductsResult;
-  };
-};
-
-export default function Home({
-  fallback,
-  products,
-  sort,
-  filters,
-  available_sorts,
-  available_filters,
-}: HomeProps) {
-  const { query } = useRouter();
+export default function Home() {
+  const { t } = useTranslation("home");
 
   return (
     <>
-      <SWRConfig
-        value={{
-          fetcher,
-          fallback,
-        }}
-      >
-        <GlobalContextProvider
-          initialValues={{
-            query: {
-              search: query.search,
-              sort: sort,
-              filters: filters?.map((f) => ({
-                id: f.id,
-                value: f.values[0].id,
-              })),
-            },
-            products: products,
-            parameters: {
-              sorts: available_sorts,
-              filters: available_filters,
-            },
-          }}
-        >
-          <HomePage />
-        </GlobalContextProvider>
-      </SWRConfig>
+      <Head>
+        <title>{t("page.title")}</title>
+        <meta name="description" content={t("page.description")!} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.svg" />
+      </Head>
+      <Header />
+      <main className={styles.main}>
+        <Content>
+          <section className={styles.sidebar}>
+            <SortFilter />
+            <PriceFilter />
+          </section>
+          <ProductList />
+          <section></section>
+        </Content>
+      </main>
     </>
   );
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const path = "/api/products?" + qs.stringify(context.query);
-  const result = await fetcher<GetProductsResult>(
-    new URL(path, process.env.APP_HOST).toString()
-  );
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) =>
+    async ({ query, locale }) => {
+      // TODO: add a better validator
+      if (
+        Array.isArray(query.search) ||
+        Array.isArray(query.sort) ||
+        Array.isArray(query.price)
+      ) {
+        throw new Error("search terms cannot be an array");
+      }
 
-  return {
-    props: {
-      products: result.products,
-      available_sorts: result.available_sorts,
-      available_filters: result.available_filters,
-      sort: result.sort ?? null,
-      filters: result.filters,
-      fallback: {
-        [path]: result,
-      },
-      ...(await serverSideTranslations(context.locale!, ["common", "home"])),
-    },
-  };
-}
+      await store.dispatch(fetchProducts(query));
+
+      return {
+        props: {
+          ...(await serverSideTranslations(locale!, ["common", "home"])),
+        },
+      };
+    }
+);

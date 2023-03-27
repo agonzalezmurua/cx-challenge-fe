@@ -5,32 +5,45 @@ import type { SearchSort } from "@/models/SearchSort.model";
 import { MeliService } from "@/services/meli/meli.service";
 import type { NextApiRequest, NextApiResponse } from "next";
 
+type SimplifiedFilterValue = string;
+
+const knownFilterNames = ["price"];
+
+export type GetProductQuery = {
+  search?: string;
+  sort?: SearchSort;
+  price?: SimplifiedFilterValue;
+};
+
 export type GetProductsResult = {
   products: Product[];
-  sort?: SearchSort;
-  filters: SearchFilters[];
   available_sorts: SearchSort[];
   available_filters: SearchFilters[];
+  /** Query applied to the search */
+  query: GetProductQuery;
 };
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<GetProductsResult>
 ) {
-  const { search, sort, price } = req.query;
-  const response = await MeliService.products.search({
-    query: (search && String(search)) || "",
-    sort: (sort && String(sort)) || null,
-    price: (price && String(price)) || null,
-  });
+  const { query } = req;
+  const params = {
+    search: (query.search && String(query.search)) || "",
+    sort: (query.sort && String(query.sort)) || null,
+    price: (query.price && String(query.price)) || null,
+  };
+
+  const response = await MeliService.products.search(params);
 
   if (!response) {
     return res.status(200).json({
       available_sorts: [],
       products: [],
-      sort: undefined,
-      filters: [],
       available_filters: [],
+      query: {
+        search: params.search,
+      },
     });
   }
 
@@ -55,11 +68,20 @@ export default async function handler(
     picture: r.thumbnail,
   }));
 
+  const filters: Record<string, SimplifiedFilterValue> = Object.fromEntries(
+    Object.values(response.filters)
+      .filter((e) => knownFilterNames.includes(e.id))
+      .map((e) => [e.id, e.values[0].id])
+  );
+
   res.status(200).json({
     products,
     available_sorts: response.available_sorts,
-    sort: response.sort,
     available_filters: response.available_filters,
-    filters: response.filters,
+    query: {
+      search: response.query,
+      sort: response.sort,
+      ...filters,
+    },
   });
 }

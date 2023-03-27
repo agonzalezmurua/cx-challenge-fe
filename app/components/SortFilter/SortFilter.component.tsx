@@ -1,21 +1,25 @@
-import { GlobalContext } from "@/global.context";
-import { useCallback, useContext, useRef } from "react";
-import { useTranslation } from "next-i18next";
-import styles from "./SortFilter.module.scss";
-import { useToggle } from "react-use";
-import { RxCaretDown } from "react-icons/rx";
-import useClickAway from "react-use/lib/useClickAway";
 import type { SearchSort } from "@/models/SearchSort.model";
+import {
+  fetchProducts,
+  selectParameters,
+  selectQuery,
+} from "@/redux/app.slice";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { useTranslation } from "next-i18next";
+import { useCallback, useRef } from "react";
+import { RxCaretDown } from "react-icons/rx";
+import { useToggle } from "react-use";
+import useClickAway from "react-use/lib/useClickAway";
+import styles from "./SortFilter.module.scss";
 
 export const SortFilter = () => {
   const list = useRef(null);
   const [open, toggleOpen] = useToggle(false);
   const { t } = useTranslation("common");
-  const {
-    query: { sort },
-    parameters: { sorts },
-    actions: { updateQuery },
-  } = useContext(GlobalContext);
+
+  const { sorts } = useAppSelector(selectParameters);
+  const { sort } = useAppSelector(selectQuery);
+  const dispatch = useAppDispatch();
 
   useClickAway(
     list,
@@ -30,9 +34,9 @@ export const SortFilter = () => {
   const handleSelect = useCallback(
     (sort: SearchSort) => {
       toggleOpen(false);
-      updateQuery({ sort: sort });
+      dispatch(fetchProducts({ sort: sort.id }));
     },
-    [updateQuery, toggleOpen]
+    [toggleOpen, dispatch]
   );
 
   return (
