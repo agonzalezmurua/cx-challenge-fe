@@ -14,6 +14,7 @@ const nextConfig = {
       },
     ],
   },
+  outputFileTracing: true,
   i18n,
 };
 

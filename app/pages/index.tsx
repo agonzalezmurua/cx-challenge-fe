@@ -52,7 +52,10 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
       return {
         props: {
-          ...(await serverSideTranslations(locale!, ["common", "home"])),
+          ...(await serverSideTranslations(locale ?? "es-ar", [
+            "common",
+            "home",
+          ])),
         },
       };
     }

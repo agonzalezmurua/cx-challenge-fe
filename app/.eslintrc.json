@@ -1,4 +1,9 @@
 {
   "extends": "next/core-web-vitals",
-  "ignorePatterns": ["__mocks__", "jest.*.js", "next.config.js"]
+  "ignorePatterns": [
+    "__mocks__",
+    "jest.*.js",
+    "next.config.js",
+    "next-i18next.config.js"
+  ]
 }
