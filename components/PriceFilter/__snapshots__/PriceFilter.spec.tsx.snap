@@ -31,7 +31,7 @@ exports[`should render and match snapshot 1`] = `
         name="custom-maximun"
         placeholder="product_filter.input_maximun.placeholder_label"
         type="number"
-        value=""
+        value="10000"
       />
       <button
         class="custom_filter__button"

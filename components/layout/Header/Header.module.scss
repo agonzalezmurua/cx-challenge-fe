@@ -19,14 +19,17 @@
   gap: 2rem;
 }
 
-.form {
+.nav_form {
   flex-grow: 1;
 
   display: inline-flex;
 }
 
-.filter {
+.nav_form__input {
   flex-grow: 1;
+  box-sizing: border-box;
+
+  height: 3rem;
 
   border-radius: var(--filter-border-radius);
   border-top-right-radius: 0;
@@ -49,7 +52,7 @@
   }
 }
 
-.search {
+.nav_form__submit {
   --normal-background: #eee;
   --pressed-background: #d7d7d7;
 

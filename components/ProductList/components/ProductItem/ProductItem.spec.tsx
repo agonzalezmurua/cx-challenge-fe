@@ -1,5 +1,5 @@
 import { Product } from "@/models/Product.model";
-import { render } from "@testing-library/react";
+import { render } from "@/test-utilts";
 import { ProductItem } from "./ProductItem.component";
 
 const product: Product = {

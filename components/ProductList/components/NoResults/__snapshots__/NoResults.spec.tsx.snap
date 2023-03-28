@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render and match snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="container"
+  >
+    <section
+      class="no_results__ilustration"
+    >
+      🌧️
+    </section>
+    <h1
+      class="no_results__title"
+    >
+      product_list.empty_result_with_query.title
+    </h1>
+    <p
+      class="no_results__label"
+    >
+      product_list.empty_result_with_query.label
+    </p>
+  </section>
+</DocumentFragment>
+`;

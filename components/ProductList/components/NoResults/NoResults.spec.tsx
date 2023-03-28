@@ -1,12 +1,12 @@
+import { NoResults } from "./NoResults.component";
 import { render } from "@/test-utilts";
-import { PriceFilter } from "./PriceFilter.component";
 
 it("should be defined", () => {
-  expect(PriceFilter).toBeDefined();
+  expect(NoResults).toBeDefined();
 });
 
 it("should render and match snapshot", () => {
-  const result = render(<PriceFilter />);
+  const result = render(<NoResults />);
 
   expect(result.asFragment()).toMatchSnapshot();
 });

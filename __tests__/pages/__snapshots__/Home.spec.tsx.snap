@@ -5,242 +5,269 @@ exports[`should render and match snapshot 1`] = `
   <section
     class="container"
   >
-    <nav
-      class="nav"
-    >
-      <img
-        alt="logo"
-        data-nimg="1"
-        decoding="async"
-        height="48"
-        loading="lazy"
-        src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
-        srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
-        style="color: transparent;"
-        width="48"
-      />
-      <form
-        action="#"
-        class="form"
-      >
-        <input
-          class="filter"
-          name="filter"
-          placeholder="header.input_placeholder"
-          type="text"
-          value="hello"
-        />
-        <button
-          class="search"
-        >
-          <svg
-            fill="currentColor"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            viewBox="0 0 1024 1024"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"
-            />
-          </svg>
-        </button>
-      </form>
-    </nav>
-  </section>
-  <main
-    class="main"
-  >
     <section
       class="container"
     >
+      <nav
+        class="nav"
+      >
+        <img
+          alt="logo"
+          data-nimg="1"
+          decoding="async"
+          height="48"
+          loading="lazy"
+          src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+          srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+          style="color: transparent;"
+          width="48"
+        />
+        <form
+          action="#"
+          class="nav_form"
+        >
+          <input
+            class="nav_form__input"
+            name="filter"
+            placeholder="header.input_placeholder"
+            type="text"
+            value="Apple Ipod"
+          />
+          <button
+            class="nav_form__submit"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 1024 1024"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"
+              />
+            </svg>
+          </button>
+        </form>
+      </nav>
+    </section>
+    <main
+      class="home__content"
+    >
       <section
-        class="left"
+        class="container"
       >
         <section
-          class="sidebar"
+          class="left"
         >
           <section
-            class="filter"
-            data-testid="sort_filter"
+            class="home__sidebar"
           >
-            <span
-              class="filter__container"
+            <section
+              class="filter"
+              data-testid="sort_filter"
             >
               <span
-                class="filter__label"
+                class="filter__container"
               >
-                product_sort.selected_label
+                <span
+                  class="filter__label"
+                >
+                  product_sort.selected_label
+                </span>
+                <section
+                  class="filter__control"
+                  data-testid="sort_trigger"
+                >
+                  <span>
+                    Más relevante
+                  </span>
+                  <svg
+                    class="filter__caret"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 15 15"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M4.18179 6.18181C4.35753 6.00608 4.64245 6.00608 4.81819 6.18181L7.49999 8.86362L10.1818 6.18181C10.3575 6.00608 10.6424 6.00608 10.8182 6.18181C10.9939 6.35755 10.9939 6.64247 10.8182 6.81821L7.81819 9.81821C7.73379 9.9026 7.61934 9.95001 7.49999 9.95001C7.38064 9.95001 7.26618 9.9026 7.18179 9.81821L4.18179 6.81821C4.00605 6.64247 4.00605 6.35755 4.18179 6.18181Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </section>
               </span>
-              <section
-                class="filter__control"
-                data-testid="sort_trigger"
+              <ul
+                aria-expanded="false"
+                class="list"
+                data-testid="sort_listbox"
+                hidden=""
+                role="listbox"
               >
-                <span />
-                <svg
-                  class="filter__caret"
-                  fill="none"
-                  height="1em"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 15 15"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
+                <li
+                  aria-selected="true"
+                  class="list__item"
+                  role="option"
+                  value="Más relevante"
                 >
-                  <path
-                    clip-rule="evenodd"
-                    d="M4.18179 6.18181C4.35753 6.00608 4.64245 6.00608 4.81819 6.18181L7.49999 8.86362L10.1818 6.18181C10.3575 6.00608 10.6424 6.00608 10.8182 6.18181C10.9939 6.35755 10.9939 6.64247 10.8182 6.81821L7.81819 9.81821C7.73379 9.9026 7.61934 9.95001 7.49999 9.95001C7.38064 9.95001 7.26618 9.9026 7.18179 9.81821L4.18179 6.81821C4.00605 6.64247 4.00605 6.35755 4.18179 6.18181Z"
-                    fill="currentColor"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </section>
-            </span>
-            <ul
-              aria-expanded="false"
-              class="list"
-              data-testid="sort_listbox"
-              hidden=""
-              role="listbox"
-            />
-          </section>
-          <section
-            class="container"
-          >
-            <label
-              class="price_filter__label"
-            >
-              product_filter.label
-            </label>
-            <form
-              action="#"
-              class="custom_filter"
-            >
-              <input
-                class="custom_filter__input"
-                min="0"
-                name="custom-minimun"
-                placeholder="product_filter.input_minimun.placeholder_label"
-                type="number"
-                value=""
-              />
-              <span
-                class="custom_filter__separator"
-              />
-              <input
-                class="custom_filter__input"
-                min="0"
-                name="custom-maximun"
-                placeholder="product_filter.input_maximun.placeholder_label"
-                type="number"
-                value=""
-              />
-              <button
-                class="custom_filter__button"
-              >
-                <svg
-                  fill="none"
-                  height="1em"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 15 15"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
+                  Más relevante
+                </li>
+                <li
+                  aria-selected="false"
+                  class="list__item"
+                  role="option"
+                  value="Menos relevante"
                 >
-                  <path
-                    clip-rule="evenodd"
-                    d="M6.18194 4.18185C6.35767 4.00611 6.6426 4.00611 6.81833 4.18185L9.81833 7.18185C9.90272 7.26624 9.95013 7.3807 9.95013 7.50005C9.95013 7.6194 9.90272 7.73386 9.81833 7.81825L6.81833 10.8182C6.6426 10.994 6.35767 10.994 6.18194 10.8182C6.0062 10.6425 6.0062 10.3576 6.18194 10.1819L8.86374 7.50005L6.18194 4.81825C6.0062 4.64251 6.0062 4.35759 6.18194 4.18185Z"
-                    fill="currentColor"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </button>
-            </form>
-          </section>
-        </section>
-      </section>
-      <section
-        class="middle"
-      >
-        <ul
-          class="product_list"
-        >
-          <li>
+                  Menos relevante
+                </li>
+              </ul>
+            </section>
             <section
               class="container"
             >
-              <section
-                class="product_picture__container"
+              <label
+                class="price_filter__label"
               >
-                <img
-                  alt="product picture"
-                  data-nimg="1"
-                  decoding="async"
-                  height="200"
-                  loading="lazy"
-                  src="/_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=640&q=75"
-                  srcset="/_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=256&q=75 1x, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=640&q=75 2x"
-                  style="color: transparent;"
-                  width="200"
+                product_filter.label
+              </label>
+              <form
+                action="#"
+                class="custom_filter"
+              >
+                <input
+                  class="custom_filter__input"
+                  min="0"
+                  name="custom-minimun"
+                  placeholder="product_filter.input_minimun.placeholder_label"
+                  type="number"
+                  value=""
                 />
-              </section>
-              <section
-                class="product_container"
-              >
-                <section
-                  class="product_price__container"
-                >
-                  <span
-                    class="product_price__amount"
-                  >
-                    product.price
-                  </span>
-                  <span
-                    class="product_price__free_shipping"
-                  >
-                    <svg
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 16 16"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
-                      />
-                    </svg>
-                  </span>
-                </section>
-                <h2
-                  class="product_name"
-                >
-                  Apple AirPods Con Estuche De Carga - Blanco
-                </h2>
                 <span
-                  class="product_installments"
+                  class="custom_filter__separator"
+                />
+                <input
+                  class="custom_filter__input"
+                  min="0"
+                  name="custom-maximun"
+                  placeholder="product_filter.input_maximun.placeholder_label"
+                  type="number"
+                  value="10000"
+                />
+                <button
+                  class="custom_filter__button"
                 >
-                  product.installments
-                </span>
-              </section>
-              <section
-                class="product_aside__container"
-              >
-                Caballito
-              </section>
+                  <svg
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 15 15"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M6.18194 4.18185C6.35767 4.00611 6.6426 4.00611 6.81833 4.18185L9.81833 7.18185C9.90272 7.26624 9.95013 7.3807 9.95013 7.50005C9.95013 7.6194 9.90272 7.73386 9.81833 7.81825L6.81833 10.8182C6.6426 10.994 6.35767 10.994 6.18194 10.8182C6.0062 10.6425 6.0062 10.3576 6.18194 10.1819L8.86374 7.50005L6.18194 4.81825C6.0062 4.64251 6.0062 4.35759 6.18194 4.18185Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </form>
             </section>
-          </li>
-        </ul>
+          </section>
+        </section>
+        <section
+          class="middle"
+        >
+          <section
+            class="container"
+          >
+            <ul
+              class="product_list"
+            >
+              <li>
+                <section
+                  class="container"
+                >
+                  <section
+                    class="product_picture__container"
+                  >
+                    <img
+                      alt="product picture"
+                      class="product_picture__image"
+                      data-nimg="fill"
+                      decoding="async"
+                      loading="lazy"
+                      sizes="100vw"
+                      src="/_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=3840&q=75"
+                      srcset="/_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=640&q=75 640w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=750&q=75 750w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=828&q=75 828w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=1080&q=75 1080w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=1200&q=75 1200w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=1920&q=75 1920w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=2048&q=75 2048w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=3840&q=75 3840w"
+                      style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; object-fit: cover; color: transparent;"
+                    />
+                  </section>
+                  <section
+                    class="product_container"
+                  >
+                    <section
+                      class="product_price__container"
+                    >
+                      <span
+                        class="product_price__amount"
+                      >
+                        product.price
+                      </span>
+                      <span
+                        class="product_price__free_shipping"
+                      >
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          stroke="currentColor"
+                          stroke-width="0"
+                          viewBox="0 0 16 16"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
+                          />
+                        </svg>
+                      </span>
+                    </section>
+                    <h2
+                      class="product__name"
+                    >
+                      Apple AirPods Con Estuche De Carga - Blanco
+                    </h2>
+                    <span
+                      class="product__installments"
+                    >
+                      product.installments
+                    </span>
+                  </section>
+                  <section
+                    class="product_aside__container"
+                  >
+                    Caballito
+                  </section>
+                </section>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section
+          class="right"
+        >
+          <section />
+        </section>
       </section>
-      <section
-        class="right"
-      >
-        <section />
-      </section>
-    </section>
-  </main>
+    </main>
+  </section>
 </DocumentFragment>
 `;

@@ -4,11 +4,12 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { Action } from "redux";
 import app from "./app.slice";
 
-export const makeStore = () =>
+export const makeStore = (preloadedState?: any) =>
   configureStore({
     reducer: {
       app,
     },
+    preloadedState,
   });
 
 export type AppStore = ReturnType<typeof makeStore>;

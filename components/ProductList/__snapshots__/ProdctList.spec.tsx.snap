@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render and match snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="container"
+  >
+    <ul
+      class="product_list"
+    >
+      <li>
+        <section
+          class="container"
+        >
+          <section
+            class="product_picture__container"
+          >
+            <img
+              alt="product picture"
+              class="product_picture__image"
+              data-nimg="fill"
+              decoding="async"
+              loading="lazy"
+              sizes="100vw"
+              src="/_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=3840&q=75"
+              srcset="/_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=640&q=75 640w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=750&q=75 750w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=828&q=75 828w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=1080&q=75 1080w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=1200&q=75 1200w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=1920&q=75 1920w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=2048&q=75 2048w, /_next/image?url=http%3A%2F%2Fhttp2.mlstatic.com%2FD_923638-MLA54361048207_032023-I.jpg&w=3840&q=75 3840w"
+              style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; object-fit: cover; color: transparent;"
+            />
+          </section>
+          <section
+            class="product_container"
+          >
+            <section
+              class="product_price__container"
+            >
+              <span
+                class="product_price__amount"
+              >
+                product.price
+              </span>
+              <span
+                class="product_price__free_shipping"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 16 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
+                  />
+                </svg>
+              </span>
+            </section>
+            <h2
+              class="product__name"
+            >
+              Apple AirPods Con Estuche De Carga - Blanco
+            </h2>
+            <span
+              class="product__installments"
+            >
+              product.installments
+            </span>
+          </section>
+          <section
+            class="product_aside__container"
+          >
+            Caballito
+          </section>
+        </section>
+      </li>
+    </ul>
+  </section>
+</DocumentFragment>
+`;

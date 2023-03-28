@@ -16,7 +16,7 @@ export const ProductItem = ({
   title,
   condition,
 }: ProductItemProps) => {
-  const { t } = useTranslation("home");
+  const { t } = useTranslation();
 
   return (
     <section className={styles.container}>

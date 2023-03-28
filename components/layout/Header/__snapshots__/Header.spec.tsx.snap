@@ -21,17 +21,17 @@ exports[`should render and match snapshot 1`] = `
       />
       <form
         action="#"
-        class="form"
+        class="nav_form"
       >
         <input
-          class="filter"
+          class="nav_form__input"
           name="filter"
           placeholder="header.input_placeholder"
           type="text"
-          value=""
+          value="Apple Ipod"
         />
         <button
-          class="search"
+          class="nav_form__submit"
         >
           <svg
             fill="currentColor"

@@ -14,7 +14,7 @@ export default function Home() {
   const { t } = useTranslation("home");
 
   return (
-    <>
+    <section className={styles.container}>
       <Head>
         <title>{t("page.title")}</title>
         <meta name="description" content={t("page.description")!} />
@@ -22,9 +22,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.svg" />
       </Head>
       <Header />
-      <main className={styles.main}>
+      <main className={styles.home__content}>
         <Content>
-          <section className={styles.sidebar}>
+          <section className={styles.home__sidebar}>
             <SortFilter />
             <PriceFilter />
           </section>
@@ -32,7 +32,7 @@ export default function Home() {
           <section></section>
         </Content>
       </main>
-    </>
+    </section>
   );
 }
 

@@ -4,5 +4,9 @@
   "product_filter.item_range.amount_label": "({{results}})",
   "product_filter.input_minimun.placeholder_label": "Mínimo",
   "product_filter.input_maximun.placeholder_label": "Máximo",
-  "header.input_placeholder": "Buscar productos, marcas y más..."
+  "header.input_placeholder": "Buscar productos, marcas y más...",
+  "product.price": "{{amount, currency}}",
+  "product.installments": "En {{quantity}} cuotas de {{amount, currency}}",
+  "product_list.empty_result_with_query.title": "Sin resultados",
+  "product_list.empty_result_with_query.label": "No logramos encontrar nada que coincida con tu búsqueda"
 }

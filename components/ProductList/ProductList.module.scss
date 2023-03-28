@@ -1,9 +1,8 @@
-.product_list {
+.container {
   border-radius: var(--border-radius-sm);
   display: flex;
   background-color: white;
 
-  list-style: none;
   
   display: flex;
   flex-direction: column;
@@ -16,5 +15,11 @@
     }
   }
 
+  min-height: 100%;
+
   filter: var(--shadow-xl);
+}
+
+.product_list {
+  list-style: none;
 }

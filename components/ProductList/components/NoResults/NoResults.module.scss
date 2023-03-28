@@ -1,0 +1,21 @@
+.container {
+  flex: 1;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 2rem;
+}
+
+.no_results__ilustration {
+  font-size: 15rem;
+}
+
+.no_results__title {
+  font-size: xx-large;
+}
+
+.no_results__label {
+  font-size: medium;
+}

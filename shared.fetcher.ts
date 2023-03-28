@@ -7,6 +7,8 @@ const isServer = typeof window === "undefined";
 export const fetcher = <T = any>(url: string) =>
   axios
     .get<T>(url, {
-      baseURL: isServer ? `http://${publicRuntimeConfig.host}` : "",
+      baseURL: isServer
+        ? `http://${publicRuntimeConfig.fetcherBaseUrl}`
+        : undefined,
     })
     .then((r) => r.data);

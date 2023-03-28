@@ -1,5 +1,5 @@
 import { Product } from "@/models/Product.model";
-import { render } from "@testing-library/react";
+import { render } from "@/test-utilts";
 import HomePage from "@/pages/index";
 
 const products: Product[] = [
@@ -29,7 +29,7 @@ it("should be defined", () => {
   expect(HomePage).toBeDefined();
 });
 
-it.failing("should render and match snapshot", () => {
+it("should render and match snapshot", () => {
   const result = render(<HomePage />);
   const [product] = products;
 

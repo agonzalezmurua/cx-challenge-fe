@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render } from "@/test-utilts";
 import { Content } from "./Content.component";
 
 it("should be defined", () => {

@@ -23,15 +23,15 @@ export const Header = () => {
     <section className={styles.container}>
       <nav className={styles.nav}>
         <Image src={Logo} alt="logo" height={48} width={48} />
-        <form action="#" onSubmit={handleSubmit} className={styles.form}>
+        <form action="#" onSubmit={handleSubmit} className={styles.nav_form}>
           <input
             name="filter"
             type="text"
-            className={styles.filter}
+            className={styles.nav_form__input}
             defaultValue={query.search}
             placeholder={t<string>("header.input_placeholder")}
           />
-          <button className={styles.search}>
+          <button className={styles.nav_form__submit}>
             <AiOutlineSearch />
           </button>
         </form>
